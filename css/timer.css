@@ -1,0 +1,107 @@
+:root {
+  --timer-border: #dde1eb;
+}
+
+#container.timer,
+#container.timer * {
+  box-sizing: border-box;
+}
+
+#container.timer {
+  height: 100%;
+  overflow-y: auto;
+}
+
+#container.timer .size {
+  height: calc(100vh - 74px);
+  /* margin: auto 0; */
+}
+
+#container.timer .input {
+  width: 72.2rem;
+  height: 8rem;
+  border: none;
+  outline: none;
+  border-bottom: 0.1rem solid var(--timer-border, #dde1eb);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.54rem;
+}
+
+#container.timer .title {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 3.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 4.8rem;
+  letter-spacing: -0.08rem;
+  margin-bottom: 1.45rem;
+}
+
+#container.timer .title .name {
+  color: var(--main-blue-1);
+}
+
+#container.timer .input::placeholder {
+  color: #b2bac6;
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: var(--timer-border, #dde1eb);
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+#container.timer .input:focus::placeholder {
+  color: transparent;
+}
+
+#container.timer .timer-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 72.2rem;
+  height: 45.3rem;
+  flex-shrink: 0;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--timer-border, #dde1eb);
+  background: #fff;
+  padding: 3rem;
+}
+
+#container.timer .timer-box .date {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 3.2rem; /* 150% */
+  margin-bottom: 5rem;
+  font-weight: 500;
+}
+
+#container.timer .timer-box .time {
+  font-size: 9rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+#container.timer .timer-box .study-btn {
+  cursor: pointer;
+}
+
+#container.timer .subjects {
+  margin-top: 1.6rem;
+  margin-bottom: 1rem;
+  gap: 0.7rem;
+}
+
+#container.timer .subjects .subject {
+  padding: 2.1rem 2.2rem;
+  border-radius: 0.8rem;
+  background: #e8f7fd;
+  color: var(--main-blue-2);
+  cursor: pointer;
+}
+
+#container.timer .subjects .subject:hover,
+#container.timer .subjects .subject:first-child {
+  background: var(--main-blue-2);
+  color: white;
+}
