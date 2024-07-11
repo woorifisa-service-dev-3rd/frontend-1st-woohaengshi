@@ -16,17 +16,20 @@
 }
 
 
-#container.ranking .size .main{
+/* #container.ranking .size .main{
     display: flex;
     flex-direction: column;
-} 
+    justify-content: flex-start;
+}  */
 
 #container.ranking .size .main > input{
-    margin: var(--input-box-margin);
+    margin-top: var(--input-box-margin);
+    margin-bottom: var(--input-box-margin);
     height: var(--input-box-height);
     border-radius: 8px;
     border: 1px solid var(--Border, #DDE1EB);
     background: var(--White, #FFF); 
+    width: 900px;
 }
 
 #container.ranking .size .main .topRanker{
