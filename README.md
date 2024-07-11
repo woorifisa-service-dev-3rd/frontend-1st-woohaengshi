@@ -13,7 +13,8 @@
 
 ### 💙  이용 방법 💙
 <img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/f5134f7f-4d72-4b6a-ace8-945ce9d69989">
-<img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/e20e8f83-16ad-4116-8be4-34f44d80aff0">
+<img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/9fe1a885-7325-4bea-a13b-bbcdfb9bd2e3">
+
 <br>
 
  - L1: 과목 선택하기
