@@ -7,7 +7,8 @@
 <br>
 
 ### 💙  서비스 소개 💙
-.gif로 시연 영상 첨부(굳이 다운로드 하지 않아도 미리보기할 수 있도록)
+![_2024_07_11_12_25_56_78-ezgif com-video-to-gif-converter](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/dc14dfb3-f509-429f-8cfd-c140e3ce153d)
+
 
 <br>
 
