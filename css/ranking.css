@@ -76,6 +76,7 @@
     margin-left: var(--top-ranker-item-margin);
 }
 
+
 #container.ranking .size .main .topRanker > ul > li:hover{
     border: 1px solid var(--main-blue-3);
 }
@@ -83,6 +84,9 @@
 
 #container.ranking .size .main .topRanker > ul > li > img{
     align-self: flex-end;
+    position: relative;
+    left: 15px;
+    bottom: 15px;
 }
 
 #container.ranking .size .main .topRanker > ul > li > div{
