@@ -36,7 +36,7 @@
   font-weight: 700;
   line-height: 4.8rem;
   letter-spacing: -0.08rem;
-  margin-bottom: 1.45rem;
+  margin-bottom: 1.54rem;
 }
 
 #container.timer .title .name {
@@ -60,26 +60,26 @@
   flex-direction: column;
   align-items: center;
   width: 72.2rem;
-  height: 45.3rem;
+  height: 44rem;
   flex-shrink: 0;
   border-radius: 0.8rem;
   border: 0.1rem solid var(--timer-border, #dde1eb);
   background: #fff;
-  padding: 3rem;
+  padding: 2.5rem;
 }
 
 #container.timer .timer-box .date {
   text-align: center;
   font-size: 2rem;
   line-height: 3.2rem; /* 150% */
-  margin-bottom: 5rem;
+  margin-bottom: 4.8rem;
   font-weight: 500;
 }
 
 #container.timer .timer-box .time {
   font-size: 9rem;
   font-weight: 700;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
 }
 
 #container.timer .timer-box .study-btn {
