@@ -38,7 +38,7 @@
 
 <br>
 
-### 💙  Lighthouse 성능 지표 💙
+### 💙 Lighthouse 성능 지표 💙
 #### 개선 전
  - 문제점: <img> 태그에서 alt 누락
 <img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/890129f5-fdc6-4a64-96f4-93e88309acab">
@@ -49,7 +49,7 @@
 
 <br>
 
-### Commit 방법
+### 💙 Commit 방법 💙  
 꼭 다음의 방법을 따라서 커밋할 필요는 없지만, 알아보기 쉽게하기 위함.
 \
 커밋의 제목은 타입을 기재 후 간단한 요약(명령조)을 기재 함.
