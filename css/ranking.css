@@ -21,15 +21,34 @@
     justify-content: flex-start;
 }  */
 
-#container.ranking .size .main > input {
+#container.ranking .size .main > .searchInput {
   margin-top: var(--input-box-margin);
   margin-bottom: var(--input-box-margin);
+  position: relative;
+}
+
+#container.ranking .size .main > .searchInput > button{
+  width: 5.6rem;
+  height: 5.6rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  font-size: 0;
+}
+
+#container.ranking .size .main > .searchInput > input {
   height: var(--input-box-height);
   border-radius: 0.8rem;
   border: 0.1rem solid var(--Border, #dde1eb);
   background: var(--White, #fff);
   width: 90rem;
   height: 5.6rem;
+  text-indent:2.5rem;
+}
+
+#container.ranking .size .main > .searchInput > input::placeholder{
+  font-size: 1.6rem;
 }
 
 #container.ranking .size .main {
