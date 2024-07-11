@@ -45,6 +45,7 @@
   width: 90rem;
   height: 5.6rem;
   text-indent:2.5rem;
+  font-size: 1.6rem;
 }
 
 #container.ranking .size .main > .searchInput > input::placeholder{
@@ -123,6 +124,11 @@
   font-size: 3.2rem;
   margin-bottom: var(--title-margin-bottom);
 }
+
+#container.ranking .size .main .topRanker > ul > li > div >  img{
+  margin-bottom: 2rem;
+} 
+
 
 #container.ranking .size .main .lowRanker {
   /* display: flex;
