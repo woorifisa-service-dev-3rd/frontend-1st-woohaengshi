@@ -98,6 +98,7 @@
   background: #e8f7fd;
   color: var(--main-blue-2);
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 #container.timer .subjects .subject:hover,
