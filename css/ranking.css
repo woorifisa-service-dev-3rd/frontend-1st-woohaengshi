@@ -30,6 +30,11 @@
     border: 0.1rem solid var(--Border, #DDE1EB);
     background: var(--White, #FFF); 
     width: 90rem;
+    height: 5.6rem;
+}
+
+#container.ranking .size .main{
+    padding-bottom: 10rem;
 }
 
 #container.ranking .size .main .topRanker{
@@ -74,6 +79,7 @@
     background: var(--White, #FFF);
 
     margin-left: var(--top-ranker-item-margin);
+    transition: all 0.2s;
 }
 
 
@@ -141,6 +147,7 @@
     align-items: center;
 
     color: var(--main-blue-1);
+    transition: all 0.2s;
 }
 
 #container.ranking .size .main .lowRanker > ul > li:hover{
