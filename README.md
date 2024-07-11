@@ -25,7 +25,7 @@
 <br>
 
 ### 💙 UI 스타일 가이드라인  💙
-![스타일 가이드 (github 용) 무시하세요](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/64542cea-cee8-431e-bf5b-065dcb21ebd2)
+![스타일 가이드 (github 용) 무시하세요](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/462d0519-41b3-4d19-b877-48e34640e4ae)
 
 
 <br>
