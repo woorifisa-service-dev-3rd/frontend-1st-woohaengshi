@@ -7,7 +7,7 @@
 <br>
 
 ### 💙  서비스 소개 💙
-![_2024_07_11_12_25_56_78-ezgif com-video-to-gif-converter](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/dc14dfb3-f509-429f-8cfd-c140e3ce153d)
+![_2024_07_11_14_21_49_8-ezgif com-video-to-gif-converter](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/c2b37dd3-fa5d-41d6-b896-cf2288a0abcd)
 
 
 <br>
