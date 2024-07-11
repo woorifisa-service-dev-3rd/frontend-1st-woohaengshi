@@ -7,14 +7,14 @@
 <br>
 
 ### 💙  서비스 소개 💙
-![_2024_07_11_14_21_49_8-ezgif com-video-to-gif-converter](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/c2b37dd3-fa5d-41d6-b896-cf2288a0abcd)
-
-
+![_2024_07_11_15_20_07_752-ezgif com-video-to-gif-converter](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/e57ac625-67a1-47cf-b732-6fa20963e061)
 <br>
 
 ### 💙  이용 방법 💙
 <img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/f5134f7f-4d72-4b6a-ace8-945ce9d69989">
 <img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/9fe1a885-7325-4bea-a13b-bbcdfb9bd2e3">
+<img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/27adf6ba-a590-43e5-ab8c-615fad7d6687">
+
 
 <br>
 
@@ -22,6 +22,10 @@
  - L2: 재생/정지 버튼을 클릭해서 시간 측정하기
  - L3: 랭커 확인하기
  - L4: 나머지 등수 확인하기
+ - L5: 과목별로 학습한 시간 확인하기
+ - L6: 총/평균 시간 확인하기
+ - L7: 학습일 달력으로 확인하기
+
 <br>
 
 ### 💙 UI 스타일 가이드라인  💙
