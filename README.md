@@ -1,5 +1,40 @@
-# frontend-1st-woohaengsi
+### 💙  우행시 💙
+> ‘우행시’는
+**우리FISA 행복한 시간**의 줄임말로 우리 FISA 3기분들이 자기개발하는 **시간을 측정하고 기록하여** <br>
+재미있는 선의의 경쟁을 할 수 있는 웹 서비스입니다!
+> 
 
+<br>
+
+### 💙  서비스 소개 💙
+.gif로 시연 영상 첨부(굳이 다운로드 하지 않아도 미리보기할 수 있도록)
+
+<br>
+
+### 💙  이용 방법 💙
+<img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/f5134f7f-4d72-4b6a-ace8-945ce9d69989">
+<img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/e20e8f83-16ad-4116-8be4-34f44d80aff0">
+<br>
+
+ - L1: 과목 선택하기
+ - L2: 재생/정지 버튼을 클릭해서 시간 측정하기
+ - L3: 랭커 확인하기
+ - L4: 나머지 등수 확인하기
+<br>
+
+### 💙 UI 스타일 가이드라인  💙
+![스타일 가이드 (github 용) 무시하세요](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/64542cea-cee8-431e-bf5b-065dcb21ebd2)
+
+
+<br>
+
+### 💙  Lighthouse 성능 지표 💙
+- Lighthouse에서 개선한 부분
+- 폰트 서체, 폰트 사이즈
+- 적절한 컬러 배색
+- 여백 및 정렬 여부
+
+<br>
 
 ### Commit 방법
 꼭 다음의 방법을 따라서 커밋할 필요는 없지만, 알아보기 쉽게하기 위함.
