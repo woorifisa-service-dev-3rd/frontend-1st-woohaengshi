@@ -1,0 +1,153 @@
+/* #container.ranking{
+
+} */
+
+:root{
+    --input-box-margin: 53px;
+    --input-box-height: 40px;
+
+    --top-ranker-margin: 31px;
+    --top-ranker-item-margin: 50px;
+
+    --low-ranker-item-margin-left: 20px;
+    --low-ranker-item-margin-bottom: 38px;
+
+    --title-margin-bottom: 20px;
+}
+
+
+#container.ranking .size .main{
+    display: flex;
+    flex-direction: column;
+} 
+
+#container.ranking .size .main > input{
+    margin: var(--input-box-margin);
+    height: var(--input-box-height);
+    border-radius: 8px;
+    border: 1px solid var(--Border, #DDE1EB);
+    background: var(--White, #FFF); 
+}
+
+#container.ranking .size .main .topRanker{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+
+#container.ranking .size .main .topRanker p {
+    color: var(--main-blue-1);
+}
+
+#container.ranking .size .main .topRanker > p {
+    font-family: "Noto Sans KR";
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px; /* 90% */
+    letter-spacing: -0.6px;
+}
+
+#container.ranking .size .main .topRanker > ul{
+    display: flex;
+    margin: var(--top-ranker-margin);
+}
+
+#container.ranking .size .main .topRanker > ul > li{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 207px;
+    height: 305px;
+    flex-shrink: 0;
+
+    border-radius: 8px;
+    border: 1px solid var(--Border, #DDE1EB);
+    background: var(--White, #FFF);
+
+    margin-left: var(--top-ranker-item-margin);
+}
+
+#container.ranking .size .main .topRanker > ul > li:hover{
+    border: 1px solid var(--main-blue-3);
+}
+
+
+#container.ranking .size .main .topRanker > ul > li > img{
+    align-self: flex-end;
+}
+
+#container.ranking .size .main .topRanker > ul > li > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container.ranking .size .main .topRanker > ul > li > p{
+    font-size: 3.2rem;
+    margin-bottom: var(--title-margin-bottom);
+}
+
+
+#container.ranking .size .main .lowRanker{
+    /* display: flex;
+    flex-direction: column; */
+}
+
+#container.ranking .size .main .lowRanker > p{
+    color: var(--main-blue-1);
+    font-family: "Noto Sans KR";
+    font-size: 3.2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px; /* 112.5% */
+    letter-spacing: -0.48px;
+    margin-bottom: var(--title-margin-bottom);
+}
+
+#container.ranking .size .main .lowRanker > ul {
+    width: 960px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#container.ranking .size .main .lowRanker > ul > li {
+    width: 290px;
+    height: 81px;   
+    flex-shrink: 0;
+    margin-right: var(--low-ranker-item-margin-left);
+    margin-bottom: var(--low-ranker-item-margin-bottom);
+    border-radius: 8px;
+    border: 1px solid var(--Border, #DDE1EB);
+    background: var(--White, #FFF);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    color: var(--main-blue-1);
+}
+
+#container.ranking .size .main .lowRanker > ul > li:hover{
+    border: 1px solid var(--main-blue-3);
+}
+
+#container.ranking .size .main .lowRanker > ul > li > img{
+    width: 51px;
+    height: 52px;
+}
+
+#container.ranking .size .main .lowRanker > ul > li > p.score{
+    /* header-web/h4 */
+    font-family: "DM Sans";
+    font-size: 3.2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px; /* 112.5% */
+    letter-spacing: -0.48px;
+}
