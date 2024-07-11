@@ -1,8 +1,12 @@
+
 ### 💙  우행시 💙
 > ‘우행시’는
 **우리FISA 행복한 시간**의 줄임말로 우리 FISA 3기분들이 자기개발하는 **시간을 측정하고 기록하여** <br>
-재미있는 선의의 경쟁을 할 수 있는 웹 서비스입니다!
+재미있는 선의의 경쟁을 할 수 있는 웹 서비스입니다! <br>
+배포 링크: [Click!](https://woorifisa-service-dev-3rd.github.io/frontend-1st-woohaengshi/)
 > 
+
+
 
 <br>
 
