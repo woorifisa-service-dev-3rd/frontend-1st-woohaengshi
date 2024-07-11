@@ -31,6 +31,11 @@
 <br>
 
 ### 💙  Lighthouse 성능 지표 💙
+#### 개선 전
+![image](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/890129f5-fdc6-4a64-96f4-93e88309acab)
+![image](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/d1c42379-833a-44ca-8443-9a789a118494)
+
+#### 개선 후
 - Lighthouse에서 개선한 부분
 - 폰트 서체, 폰트 사이즈
 - 적절한 컬러 배색
