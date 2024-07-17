@@ -110,6 +110,11 @@
     box-sizing: border-box;
     transition: all 0.2s linear;
 }
+
+#container.member .member_wrap .content .btn_box .button button:hover,
+#container.member .member_wrap .content .btn_box .button a:hover{
+    background-color: var(--main-blue-2);
+}
 #container.member .member_wrap .content .btn_join .button{
     margin-top: 10px;
 }
