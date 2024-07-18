@@ -86,6 +86,10 @@
   cursor: pointer;
 }
 
+#container.timer .timer-box .study-btn.none {
+  display: none;
+}
+
 #container.timer .subjects {
   margin-top: 1.6rem;
   margin-bottom: 1rem;
