@@ -4,9 +4,59 @@ const prevButton = document.querySelector('#container.timer .prev');
 const nextButton = document.querySelector('#container.timer .next');
 let subjects;
 
-let currentIndex = 0;
-const visibleSubjects = 9;
-const gap = 7;
+function updateSubjects() {
+    subjects = document.querySelectorAll('#container.timer .subjects .subject');
+
+    subjects.forEach((subject, index) => {
+        if (index !== subjects.length - 1) {
+            subject.onclick = (e) => e.target.classList.toggle('selected');
+            subject.ondblclick = (e) => {
+                e.target.remove();
+                const newSubject = Array.from(getSubjectsLocalStorage()).filter((s) => s !== e.target.textContent);
+                localStorage.setItem('subjects', JSON.stringify(newSubject));
+                updateSubjects();
+                updatePosition();
+                updateButtonVisibility();
+            };
+        }
+    });
+}
+
+let currentTranslateX = 0;
+const moveDistance = -698;
+let maxMoves = 0;
+
+function updatePosition() {
+    subjectsContainer.style.transform = `translateX(${currentTranslateX}px)`;
+}
+
+function updateButtonVisibility() {
+    prevButton.style.visibility = currentTranslateX < 0 ? 'visible' : 'hidden';
+    //   nextButton.style.visibility =
+    //     currentTranslateX >= moveDistance * maxMoves ? "visible" : "hidden";
+}
+
+nextButton.addEventListener('click', () => {
+    //   if (currentTranslateX >= moveDistance * maxMoves) {
+    currentTranslateX += moveDistance;
+    updatePosition();
+    updateButtonVisibility();
+    //   }
+});
+
+prevButton.addEventListener('click', () => {
+    if (currentTranslateX < 0) {
+        currentTranslateX -= moveDistance;
+        updatePosition();
+        updateButtonVisibility();
+    }
+});
+
+//// 과목 추가
+const addSubjectButton = document.querySelector('#container.timer .subject:last-child');
+const modal = document.getElementById('addSubjectModal');
+const closeButton = document.querySelector('#container.timer .close');
+const addSubjectForm = document.getElementById('addSubjectForm');
 
 function getSubjectsLocalStorage() {
     const newSubjectsString = localStorage.getItem('subjects');
