@@ -38,13 +38,14 @@
 <br>
 
 ### 💙 ESLint 룰셋 목록 💙
-```json
-{
-    rules: {
-      semi: ['error', 'always'],
-      quotes: ['warn', 'single'], 'no-unused-vars': 'warn',
-      indent: ['error', 4],
-    }
+```
+ {
+     rules: {
+         semi: ['error', 'always'],
+         quotes: ['warn', 'single'],
+         'no-unused-vars': 'warn',
+         indent: ['error', 4],
+     },
  }
 ```
 #### 1. `semi`
