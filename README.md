@@ -1,7 +1,7 @@
 
 ### 💙  우행시 💙
 > ‘우행시’는
-**우리FISA 행복한 시간**의 줄임말로 우리 FISA 3기분들이 자기개발하는 **시간을 측정하고 기록하여** <br>
+**우리FISA의 행복한 시간**의 줄임말로 우리 FISA 3기분들이 자기개발하는 **시간을 측정하고 기록하여** <br>
 재미있는 선의의 경쟁을 할 수 있는 웹 서비스입니다! <br>
 배포 링크: [Click!](https://woorifisa-service-dev-3rd.github.io/frontend-1st-woohaengshi/)
 > 
@@ -11,24 +11,25 @@
 <br>
 
 ### 💙  서비스 소개 💙
-![_2024_07_11_15_20_07_752-ezgif com-video-to-gif-converter](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/e57ac625-67a1-47cf-b732-6fa20963e061)
+![ezgif-4-ab8eb7baf7](https://github.com/user-attachments/assets/178e94cf-648d-4d3b-89d1-5c971ffe4fbd)
 <br><br>
 
 ### 💙  이용 방법 💙
-<img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/f5134f7f-4d72-4b6a-ace8-945ce9d69989">
-<img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/9fe1a885-7325-4bea-a13b-bbcdfb9bd2e3">
-<img width=800px src="https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/27adf6ba-a590-43e5-ab8c-615fad7d6687">
+<img width=800px src="https://github.com/user-attachments/assets/b5d300f4-778d-4983-9129-e69c3a6516a2">
+<img width=800px src="https://github.com/user-attachments/assets/c4586f30-75b2-4617-a1d6-c27180aaaff6">
+<img width=800px src="https://github.com/user-attachments/assets/da35bb36-fab1-422c-9499-15c512981eb9">
 
 
 <br>
 
- - L1: 과목 선택하기
+ - L1: 과목 선택 및 추가하기
  - L2: 재생/정지 버튼을 클릭해서 시간 측정하기
  - L3: 랭커 확인하기
  - L4: 나머지 등수 확인하기
- - L5: 과목별로 학습한 시간 확인하기
- - L6: 총/평균 시간 확인하기
- - L7: 학습일 달력으로 확인하기
+ - L5: 이름으로 검색하기
+ - L6: 학습한 과목 확인하기
+ - L7: 총/평균 시간 확인하기
+ - L8: 달력으로 학습기록 확인하기
 
 <br>
 
