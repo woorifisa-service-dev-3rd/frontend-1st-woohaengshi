@@ -92,11 +92,11 @@ db.collection("study")
 });
 
 // db.collection('study').add({
-//     userId: '7kMWRam2N9TSv2JC3AV6',
-//     name: '강현우',
+//     userId: 'hLgvmCYb4JiuyevHiHwe',
+//     name: '강재필',
 //     subject: 'React',
 //     date: new Date(),
-//     time: '654321'
+//     time: '321123'
 // })
 // .then(() => {
 //     console.log('Document successfully written!');
