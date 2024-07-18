@@ -53,7 +53,7 @@
 **설정:** `"semi": ["error", "always"]` <br>
 **이유:** 모든 문장 끝에 세미콜론을 사용하도록 강제. 자동 세미콜론 삽입(ASI)로 인한 예기치 않은 동작을 방지할 수 있기 때문에 추가.
 #### 2. `quotes`
-**설정:** `"quotes": ["error", "single"]` <br>
+**설정:** `"quotes": ["warn", "single"]` <br>
 **이유:** 코드 내에서 일관된 따옴표 스타일을 유지. 'single'로 통일하기 위해 추가.
 #### 3. `no-unused-vars`
 **설정:** `"no-unused-vars": "warn"` <br>
