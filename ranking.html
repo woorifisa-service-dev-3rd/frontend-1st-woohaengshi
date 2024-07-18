@@ -63,16 +63,15 @@
         <div class="size">
             <div class="main">
                 <div class="searchInput">
-                    <button>
+                    <button id="searchBtn" >
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.0833 17.4167C14.1334 17.4167 17.4167 14.1334 17.4167 10.0833C17.4167 6.03325 14.1334 2.75 10.0833 2.75C6.03325 2.75 2.75 6.03325 2.75 10.0833C2.75 14.1334 6.03325 17.4167 10.0833 17.4167Z" stroke="#23262A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M19.25 19.25L15.2625 15.2625" stroke="#23262A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        
                     </button>
-                    <input type="text" placeholder="검색">
+                    <input id="searchInput" type="text" placeholder="검색">
                 </div>
-                <div class="topRanker">
+                <div id="topRanker" class="topRanker">
                     <p>대단한 사람들!</p>
                     <ul>
                         <!-- <li>
@@ -101,9 +100,20 @@
                         </li> -->
                     </ul>
                 </div>
-                <div class="lowRanker">
+                <div id="lowRanker" class="lowRanker">
                     <p>멋있는 사람들!</p>
                     <ul class="scroll"> 
+                        <!-- <li>
+                            <p class="score">4</p>
+                            <img src="img/profile.png" alt="프로필 이미지">
+                            <p>홍길동</p>
+                            <p>00시간 00분</p>
+                        </li> -->
+                    </ul>
+                </div>
+                <div id="search" class="lowRanker displayNone">
+                    <p>검색 결과</p>
+                    <ul class="scroll searchUl"> 
                         <!-- <li>
                             <p class="score">4</p>
                             <img src="img/profile.png" alt="프로필 이미지">
