@@ -2,176 +2,137 @@ import { db, collection, doc } from './firebaseConfig.js';
 
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
-
 const topRanker = document.getElementById("topRanker");
 const lowRanker = document.getElementById("lowRanker");
 const search = document.getElementById("search");
 
-searchBtn.addEventListener('click', (event)=>{
-    topRanker.style.display = 'none';
-    lowRanker.style.display = 'none';
-    search.style.display = 'block';
-    db.collection("study")
+const handleSearch = () => {
+  topRanker.style.display = 'none';
+  lowRanker.style.display = 'none';
+  search.style.display = 'block';
+
+  db.collection("study")
     .get()
     .then((result) => {
-        const scrollList = document.querySelector('.searchUl');
-        scrollList.innerHTML = '';
-        // 데이터 객체 생성
-        let dataMap = new Map();
-    
-        // 데이터 추가 및 합산
-        result.docs.forEach((doc) => {
+      const scrollList = document.querySelector('.searchUl');
+      scrollList.innerHTML = '';
+      const dataMap = new Map();
+
+      result.docs.forEach((doc) => {
         const userId = doc.data().userId;
         const userName = doc.data().name;
         const time = parseInt(doc.data().time);
-    
+
         if (dataMap.has(userId)) {
-            dataMap.get(userId).totalTime += time;
+          dataMap.get(userId).totalTime += time;
         } else {
-            dataMap.set(userId, { userId, userName, totalTime: time });
+          dataMap.set(userId, { userId, userName, totalTime: time });
         }
-        });
-    
-        // 데이터 배열로 변환 및 정렬
-        const dataArray = Array.from(dataMap.values());
-        dataArray.sort((a, b) => b.totalTime - a.totalTime);
+      });
 
-          
-        // 나머지 데이터 처리
-        for (let i = 0; i < dataArray.length; i++) {
-            const data = dataArray[i];
+      const dataArray = Array.from(dataMap.values());
+      dataArray.sort((a, b) => b.totalTime - a.totalTime);
 
-            if(data.userName === searchInput.value) {
-                const listItem = document.createElement('li');
-                const scoreElement = document.createElement('p');
-                const profileImage = document.createElement('img');
-                const nameElement = document.createElement('p');
-                const timeElement = document.createElement('p');
-                
-                // 데이터 할당
-                scoreElement.textContent = i + 1;
-                scoreElement.classList.add('score');
-                profileImage.src = 'img/profile.png';
-                nameElement.textContent = data.userName;
-                const hours = Math.floor(data.totalTime / 3600);
-                const minutes = Math.floor((data.totalTime % 3600) / 60);
-                timeElement.textContent = `${hours}시간 ${minutes}분`;
-        
-                // 태그 구조 생성
-                listItem.appendChild(scoreElement);
-                listItem.appendChild(profileImage);
-                listItem.appendChild(nameElement);
-                listItem.appendChild(timeElement);
-        
-                // 리스트에 추가
-                scrollList.appendChild(listItem);
-            }
-            
+      dataArray.forEach((data) => {
+        if (data.userName === searchInput.value) {
+          const listItem = createListItem(data, dataArray.indexOf(data) + 1);
+          scrollList.appendChild(listItem);
         }
+      });
     });
-});
+};
 
-// 데이터 불러오기
-db.collection("study")
-.get()
-.then((result) => {
-    console.log("Documents count:", result.size);
+const createListItem = (data, rank) => {
+  const listItem = document.createElement('li');
+  const scoreElement = document.createElement('p');
+  const profileImage = document.createElement('img');
+  const nameElement = document.createElement('p');
+  const timeElement = document.createElement('p');
 
-    const scrollList = document.querySelector('.scroll');
-    const topRankerList = document.querySelector('.topRanker ul');
-    // 데이터 객체 생성
-    let dataMap = new Map();
+  scoreElement.textContent = rank;
+  scoreElement.classList.add('score');
+  profileImage.src = 'img/profile.png';
+  nameElement.textContent = data.userName;
+  const hours = Math.floor(data.totalTime / 3600);
+  const minutes = Math.floor((data.totalTime % 3600) / 60);
+  timeElement.textContent = `${hours}시간 ${minutes}분`;
 
-    // 데이터 추가 및 합산
-    result.docs.forEach((doc) => {
-    const userId = doc.data().userId;
-    const userName = doc.data().name;
-    const time = parseInt(doc.data().time);
+  listItem.appendChild(scoreElement);
+  listItem.appendChild(profileImage);
+  listItem.appendChild(nameElement);
+  listItem.appendChild(timeElement);
 
-    if (dataMap.has(userId)) {
-        dataMap.get(userId).totalTime += time;
-    } else {
-        dataMap.set(userId, { userId, userName, totalTime: time });
-    }
-    });
+  return listItem;
+};
 
-    // 데이터 배열로 변환 및 정렬
-    const dataArray = Array.from(dataMap.values());
-    dataArray.sort((a, b) => b.totalTime - a.totalTime);
+const loadData = () => {
+  db.collection("study")
+    .get()
+    .then((result) => {
+      console.log("Documents count:", result.size);
 
+      const scrollList = document.querySelector('.scroll');
+      const topRankerList = document.querySelector('.topRanker ul');
+      const dataMap = new Map();
 
-    // 상위 3명 처리
-    for (let i = 0; i < 3 && i < dataArray.length; i++) {
+      result.docs.forEach((doc) => {
+        const userId = doc.data().userId;
+        const userName = doc.data().name;
+        const time = parseInt(doc.data().time);
+
+        if (dataMap.has(userId)) {
+          dataMap.get(userId).totalTime += time;
+        } else {
+          dataMap.set(userId, { userId, userName, totalTime: time });
+        }
+      });
+
+      const dataArray = Array.from(dataMap.values());
+      dataArray.sort((a, b) => b.totalTime - a.totalTime);
+
+      for (let i = 0; i < 3 && i < dataArray.length; i++) {
         const data = dataArray[i];
-        const listItem = document.createElement('li');
-        const medalImage = document.createElement('img');
-        const profileContainer = document.createElement('div');
-        const profileImage = document.createElement('img');
-        const nameElement = document.createElement('p');
-        const timeElement = document.createElement('p');
-      
-        // 메달 이미지 할당
-        medalImage.src = `img/medal_${i + 1}.png`;
-      
-        // 데이터 할당
-        profileImage.src = 'img/profile.png';
-        nameElement.textContent = data.userName;
-        const hours = Math.floor(data.totalTime / 3600);
-        const minutes = Math.floor((data.totalTime % 3600) / 60);
-        timeElement.textContent = `${hours}시간 ${minutes}분`;
-
-      
-        // 태그 구조 생성
-        profileContainer.appendChild(profileImage);
-        profileContainer.appendChild(nameElement);
-        listItem.appendChild(medalImage);
-        listItem.appendChild(profileContainer);
-        listItem.appendChild(timeElement);
-      
-        // 상위 3명 리스트에 추가
+        const listItem = createTopRankerListItem(data, i + 1);
         topRankerList.appendChild(listItem);
       }
-      
-      
-    // 나머지 데이터 처리
-    for (let i = 3; i < dataArray.length; i++) {
+
+      for (let i = 3; i < dataArray.length; i++) {
         const data = dataArray[i];
-        const listItem = document.createElement('li');
-        const scoreElement = document.createElement('p');
-        const profileImage = document.createElement('img');
-        const nameElement = document.createElement('p');
-        const timeElement = document.createElement('p');
-        
-        // 데이터 할당
-        scoreElement.textContent = i + 1;
-        scoreElement.classList.add('score');
-        profileImage.src = 'img/profile.png';
-        nameElement.textContent = data.userName;
-        const hours = Math.floor(data.totalTime / 3600);
-        const minutes = Math.floor((data.totalTime % 3600) / 60);
-        timeElement.textContent = `${hours}시간 ${minutes}분`;
-
-        // 태그 구조 생성
-        listItem.appendChild(scoreElement);
-        listItem.appendChild(profileImage);
-        listItem.appendChild(nameElement);
-        listItem.appendChild(timeElement);
-
-        // 리스트에 추가
+        const listItem = createListItem(data, i + 1);
         scrollList.appendChild(listItem);
+      }
+    });
+};
+
+const createTopRankerListItem = (data, rank) => {
+  const listItem = document.createElement('li');
+  const medalImage = document.createElement('img');
+  const profileContainer = document.createElement('div');
+  const profileImage = document.createElement('img');
+  const nameElement = document.createElement('p');
+  const timeElement = document.createElement('p');
+
+  medalImage.src = `img/medal_${rank}.png`;
+  profileImage.src = 'img/profile.png';
+  nameElement.textContent = data.userName;
+  const hours = Math.floor(data.totalTime / 3600);
+  const minutes = Math.floor((data.totalTime % 3600) / 60);
+  timeElement.textContent = `${hours}시간 ${minutes}분`;
+
+  profileContainer.appendChild(profileImage);
+  profileContainer.appendChild(nameElement);
+  listItem.appendChild(medalImage);
+  listItem.appendChild(profileContainer);
+  listItem.appendChild(timeElement);
+
+  return listItem;
+};
+
+searchBtn.addEventListener('click', handleSearch);
+searchInput.addEventListener('keyup', (event)=>{
+    if(event.keyCode == 13){
+        event.preventDefault();
+        searchBtn.click();
     }
 });
-
-// db.collection('study').add({
-//     userId: 'hLgvmCYb4JiuyevHiHwe',
-//     name: '강재필',
-//     subject: 'React',
-//     date: new Date(),
-//     time: '321123'
-// })
-// .then(() => {
-//     console.log('Document successfully written!');
-// })
-// .catch((error) => {
-//     console.error('Error writing document: ', error);
-// });
+loadData();
