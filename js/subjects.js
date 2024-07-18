@@ -8,6 +8,18 @@ let currentIndex = 0;
 const visibleSubjects = 9;
 const gap = 7;
 
+function getSubjectsLocalStorage() {
+    const newSubjectsString = localStorage.getItem('subjects');
+    const newSubjects = newSubjectsString ? JSON.parse(newSubjectsString) : [];
+    return newSubjects;
+}
+
+function setSubjectsLocalStorage(subject) {
+    const subjects = getSubjectsLocalStorage();
+    const newSubjects = [...subjects, subject];
+    localStorage.setItem('subjects', JSON.stringify(newSubjects));
+}
+
 function updateSubjects() {
     subjects = document.querySelectorAll('#container.timer .subjects .subject');
 
@@ -18,8 +30,6 @@ function updateSubjects() {
             : null
     );
 }
-
-updateSubjects();
 
 function updatePosition() {
     if (currentIndex > 0) {
@@ -82,6 +92,7 @@ addSubjectForm.addEventListener('submit', (event) => {
     const subjectName = document.getElementById('subjectName').value;
     if (subjectName) {
         addNewSubject(subjectName);
+        setSubjectsLocalStorage(subjectName);
         modal.style.display = 'none';
         addSubjectForm.reset();
     }
@@ -103,3 +114,5 @@ function addNewSubject(subjectName) {
     updatePosition();
     updateButtonVisibility();
 }
+
+getSubjectsLocalStorage().forEach((subject) => addNewSubject(subject));
