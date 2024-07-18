@@ -3,8 +3,20 @@ import { db, collection, doc } from './firebaseConfig.js';
 const buttonDom = document.getElementById('joinBtn');
 const userName = document.getElementById('user_name');
 const password = document.getElementById('user_pw');
-const selectedRadio = document.querySelector('input[name="user_cls"]:checked');
-const selectedLabel = document.querySelector('input[name="user_cls"]:checked + label');
+const radioButtons = document.querySelectorAll('input[name="user_cls"]');
+
+let selectedLabel = 'AI 엔지니어링';
+
+radioButtons.forEach((radioButton) => {
+  radioButton.addEventListener('change', handleRadioButtonChange);
+});
+
+
+function handleRadioButtonChange() {
+  // 선택된 라디오버튼의 label 텍스트 가져오기
+  selectedLabel = document.querySelector(`label[for="${this.id}"]`).textContent;
+}
+
 
 buttonDom.addEventListener('click', (event)=>{
     event.preventDefault();
@@ -29,7 +41,7 @@ buttonDom.addEventListener('click', (event)=>{
             db.collection("user").add({
                 name: userName.value,
                 password: password.value,
-                class: selectedLabel.textContent
+                class: selectedLabel
             })
             .then(() => {
                 alert('회원가입 성공!');
