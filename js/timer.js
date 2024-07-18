@@ -160,3 +160,9 @@ function updateStopwatch() {
 
   timer.textContent = hours + ":" + minutes + ":" + seconds;
 }
+
+// 이름 불러오기
+const nameElement = document.querySelector("#container.timer .name");
+const username = localStorage.getItem("userName");
+
+nameElement.textContent = username;
