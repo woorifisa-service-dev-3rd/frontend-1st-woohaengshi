@@ -5,7 +5,7 @@ if(window.localStorage.getItem('userId') === null){
 
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
-      localStorage.clear();
-      window.location.href = 'login.html';
+        localStorage.clear();
+        window.location.href = 'login.html';
     }
 });
