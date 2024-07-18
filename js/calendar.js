@@ -1,4 +1,4 @@
-import { db } from '../firebaseConfig.js';
+import { db } from './firebaseConfig.js';
         
 //데이터 불러오기
 db.collection('study')
