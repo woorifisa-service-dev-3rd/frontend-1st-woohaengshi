@@ -13,11 +13,11 @@ buttonDom.addEventListener('click', (event)=>{
     .then((result) => {
         console.log("Documents count:", result.size);
         result.docs.forEach((doc) => {
-            console.log("Document data:", doc.data());
+            // console.log("Document data:", doc.data());
             if(userName.value === doc.data().name && password.value == doc.data().password){
                 alert('로그인 성공');
                 isLoginSuccess = true; 
-                console.log(doc.id);
+                // console.log(doc.id);
                 window.localStorage.setItem('userId',  doc.id);
                 window.localStorage.setItem('userName',  doc.data().name);
                 window.location.href = 'index.html';

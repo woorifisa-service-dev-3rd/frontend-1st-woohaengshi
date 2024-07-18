@@ -14,10 +14,10 @@ buttonDom.addEventListener('click', (event)=>{
     db.collection("user")
     .get()
     .then((result) => {
-        console.log("Documents count:", result.size);
+        // console.log("Documents count:", result.size);
         let isDuplicateUser = false;
         result.docs.forEach((doc) => {
-            console.log("Document data:", doc.data());
+            // console.log("Document data:", doc.data());
             if(userName.value === doc.data().name) {
                 isDuplicateUser = true;
                 return;
