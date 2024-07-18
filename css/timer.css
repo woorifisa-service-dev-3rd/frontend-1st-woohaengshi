@@ -181,6 +181,7 @@
   cursor: pointer;
   transition: all 0.2s;
   font-size: 1.8rem;
+  border-radius: 0.8rem;
 }
 
 #container.timer .modal .submit:hover {
