@@ -34,7 +34,7 @@ const handleSearch = () => {
       dataArray.sort((a, b) => b.totalTime - a.totalTime);
 
       dataArray.forEach((data) => {
-        if (data.userName === searchInput.value) {
+        if (data.userName.includes(searchInput.value)) {
           const listItem = createListItem(data, dataArray.indexOf(data) + 1);
           scrollList.appendChild(listItem);
         }
