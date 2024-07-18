@@ -77,12 +77,12 @@
                             <div class="row">
                                 <label for="user_pw">비밀번호</label>
                                 <div class="input">
-                                    <input type="text" id="user_pw" placeholder="비밀번호를 입력해주세요." />
+                                    <input type="password" id="user_pw" placeholder="비밀번호를 입력해주세요." />
                                 </div>
                             </div>
                         </div>
                         <div class="btn_box">
-                            <div class="button">
+                            <div id="loginBtn" class="button">
                                 <button type="submit">로그인</button>
                             </div>
                         </div>
@@ -99,5 +99,11 @@
     </section>
     <!-- //container -->
 </div>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+<script type="module" src="firebaseConfig.js"></script>
+<script type="module" src="login.js"></script>
 </body>
 </html>
