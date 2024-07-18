@@ -1,5 +1,76 @@
 import { db, collection, doc } from './firebaseConfig.js';
 
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+
+const topRanker = document.getElementById("topRanker");
+const lowRanker = document.getElementById("lowRanker");
+const search = document.getElementById("search");
+
+searchBtn.addEventListener('click', (event)=>{
+    topRanker.style.display = 'none';
+    lowRanker.style.display = 'none';
+    search.style.display = 'block';
+    db.collection("study")
+    .get()
+    .then((result) => {
+        const scrollList = document.querySelector('.searchUl');
+        scrollList.innerHTML = '';
+        // 데이터 객체 생성
+        let dataMap = new Map();
+    
+        // 데이터 추가 및 합산
+        result.docs.forEach((doc) => {
+        const userId = doc.data().userId;
+        const userName = doc.data().name;
+        const time = parseInt(doc.data().time);
+    
+        if (dataMap.has(userId)) {
+            dataMap.get(userId).totalTime += time;
+        } else {
+            dataMap.set(userId, { userId, userName, totalTime: time });
+        }
+        });
+    
+        // 데이터 배열로 변환 및 정렬
+        const dataArray = Array.from(dataMap.values());
+        dataArray.sort((a, b) => b.totalTime - a.totalTime);
+
+          
+        // 나머지 데이터 처리
+        for (let i = 0; i < dataArray.length; i++) {
+            const data = dataArray[i];
+
+            if(data.userName === searchInput.value) {
+                const listItem = document.createElement('li');
+                const scoreElement = document.createElement('p');
+                const profileImage = document.createElement('img');
+                const nameElement = document.createElement('p');
+                const timeElement = document.createElement('p');
+                
+                // 데이터 할당
+                scoreElement.textContent = i + 1;
+                scoreElement.classList.add('score');
+                profileImage.src = 'img/profile.png';
+                nameElement.textContent = data.userName;
+                const hours = Math.floor(data.totalTime / 3600);
+                const minutes = Math.floor((data.totalTime % 3600) / 60);
+                timeElement.textContent = `${hours}시간 ${minutes}분`;
+        
+                // 태그 구조 생성
+                listItem.appendChild(scoreElement);
+                listItem.appendChild(profileImage);
+                listItem.appendChild(nameElement);
+                listItem.appendChild(timeElement);
+        
+                // 리스트에 추가
+                scrollList.appendChild(listItem);
+            }
+            
+        }
+    });
+});
+
 // 데이터 불러오기
 db.collection("study")
 .get()

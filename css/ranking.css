@@ -191,3 +191,7 @@
   line-height: 3.6rem; /* 112.5% */
   letter-spacing: -0.48px;
 }
+
+.displayNone{
+  display: none;
+}
