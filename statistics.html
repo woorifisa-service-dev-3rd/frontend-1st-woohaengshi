@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>우.행.시. | 통계</title>
+    <title>우.행.시.</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/common.css">
-
     <link rel="stylesheet" href="css/statistics.css">
+    <script src="js/checkLogin.js"></script>
 </head>
 <body>
 <div id="wrap">
@@ -63,41 +63,20 @@
         <div class="size">
             <div class="row-end">
                 <section class="left">
-                    <div class="subject_wrap">
-                        <div class="subject_box">
-                            <header class="title">
-                                <em>html</em>
-                            </header>
-                            <section class="content">
-                                <div class="time_history">
-                                    <ul class="scroll">
-                                        <li>24.07.01 | 00:00:09</li>
-                                        <li>24.07.01 | 00:00:09</li>
-                                        <li>24.07.01 | 00:00:09</li>
-                                        <li>24.07.01 | 00:00:09</li>
-                                        <li>24.07.01 | 00:00:09</li>
-                                    </ul>
-                                </div>
-                            </section>
+                    <div class="filter_wrap">
+                        <div class="filter_box">
+                            <div class="scroll">
+                                <ul class="row-left">
+                                    <!-- <li><button>#html</button></li>
+                                    <li><button>#css</button></li>
+                                    <li><button>#javascript</button></li>
+                                    <li><button>#cloud</button></li>
+                                    <li><button>#java</button></li>
+                                    <li><button>#spring</button></li>
+                                    <li><button>#ajax</button></li> -->
+                                </ul>
+                            </div>
                         </div>
-                        <!-- //subject_box -->
-                        <div class="subject_box">
-                            <header class="title">
-                                <em>cloud</em>
-                            </header>
-                            <section class="content">
-                                <div class="time_history">
-                                    <ul class="scroll">
-                                        <li>24.07.01 | 00:00:09</li>
-                                        <li>24.07.01 | 00:00:09</li>
-                                        <li>24.07.01 | 00:00:09</li>
-                                        <li>24.07.01 | 00:00:09</li>
-                                        <li>24.07.01 | 00:00:09</li>
-                                    </ul>
-                                </div>
-                            </section>
-                        </div>
-                        <!-- //subject_box -->
                     </div>
                     <!-- //subject_wrap -->
                     <div class="statis_wrap">
@@ -106,7 +85,7 @@
                                 <b>총합</b>
                             </header>
                             <section class="content">
-                                <p>30:00:00</p>
+                                <p id="time_sum">30:00:00</p>
                             </section>
                         </div>
                         <!-- //statis_box -->
@@ -115,7 +94,7 @@
                                 <b>평균</b>
                             </header>
                             <section class="content">
-                                <p>30:00:00</p>
+                                <p id="time_avg">30:00:00</p>
                             </section>
                         </div>
                         <!-- //statis_box -->
@@ -126,19 +105,19 @@
                 <section class="right">
                     <header class="title">
                         <div class="row-end">
-                            <h2>2024년 7월</h2>
+                            <h2 id="title">2024년 7월</h2>
                             <div class="util row-cen">
                                 <div class="btn_box row-cen">
-                                    <button type="button" class="prev">이전달</button>
-                                    <button type="button" class="next">다음달</button>
+                                    <button type="button" class="prev" id="prev">이전달</button>
+                                    <button type="button" class="next" id="next">다음달</button>
                                 </div>
                                 <!-- //btn_box -->
-                                <div class="select">
+                                <!-- <div class="select">
                                     <select>
                                         <option value="month" selected>월간</option>
                                         <option value="week">주간</option>
                                     </select>
-                                </div>
+                                </div> -->
                             </div>
                             <!-- //util -->
                         </div>
@@ -158,20 +137,20 @@
                                         <th scope="col" class="radius_right">토</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="calendar_body">
                                     <tr>
                                         <td><span></span></td>
-                                        <td><span>1</span></td>
-                                        <td><span>2</span></td>
-                                        <td><span>3</span></td>
-                                        <td><span>4</span></td>
-                                        <td><span>5</span></td>
-                                        <td><span>6</span></td>
+                                        <td><span>01</span></td>
+                                        <td><span>02</span></td>
+                                        <td><span>03</span></td>
+                                        <td><span>04</span></td>
+                                        <td><span>05</span></td>
+                                        <td><span>06</span></td>
                                     </tr>
                                     <tr>
-                                        <td><span>7</span></td>
-                                        <td><span>8</span></td>
-                                        <td><span>9</span></td>
+                                        <td><span>07</span></td>
+                                        <td><span>08</span></td>
+                                        <td><span>09</span></td>
                                         <td><span>10</span></td>
                                         <td><span>11</span></td>
                                         <td><span>12</span></td>
@@ -180,9 +159,9 @@
                                     <tr>
                                         <td><span>14</span></td>
                                         <td><span>15</span></td>
-                                        <td class="small"><span>16</span></td>
-                                        <td class="mid"><span>17</span></td>
-                                        <td class="big"><span>18</span></td>
+                                        <td><span>16</span></td>
+                                        <td><span>17</span></td>
+                                        <td><span>18</span></td>
                                         <td><span>19</span></td>
                                         <td><span>20</span></td>
                                     </tr>
@@ -215,5 +194,12 @@
     </section>
     <!-- //container -->
 </div>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+<script type="module" src="firebaseConfig.js"></script>
+<script type="module" src="js/calendar.js"></script>
+<script type="module" src="js/filter.js"></script>
 </body>
 </html>
