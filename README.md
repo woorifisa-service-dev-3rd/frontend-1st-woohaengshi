@@ -33,57 +33,33 @@
 <br>
 
 ### 💙 UI 스타일 가이드라인  💙
-![스타일 가이드 (github 용) 무시하세요](https://github.com/woorifisa-service-dev-3rd/frontend-1st-woohaengshi/assets/23547185/462d0519-41b3-4d19-b877-48e34640e4ae)
+![스타일 가이드 (github 용) 무시하세요](https://github.com/user-attachments/assets/50fdb176-756b-4ec9-85d2-a90d75b0e2f9)
 
 <br>
 
 ### 💙 ESLint 룰셋 목록 💙
 ```json
 {
-  "rules": {
-    "no-unused-vars": "warn",
-    "eqeqeq": ["error", "always"],
-    "curly": ["error", "all"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    "no-console": "warn",
-    "indent": ["error", 2],
-    "no-undef": "error",
-    "no-multiple-empty-lines": ["error", { "max": 1 }],
-    "no-trailing-spaces": "error"
-  }
-}
+    rules: {
+      semi: ['error', 'always'],
+      quotes: ['warn', 'single'], 'no-unused-vars': 'warn',
+      indent: ['error', 4],
+    }
+ }
 ```
-#### 1. `no-unused-vars`
-**설정:** `"no-unused-vars": "warn"` <br>
-**이유:** 선언했지만 사용하지 않은 변수가 있으면 경고를 해줌. 불필요한 코드와 잠재적인 버그를 방지하기위해 추가.
-#### 2. `eqeqeq`
-**설정:** `"eqeqeq": ["error", "always"]` <br>
-**이유:** 동등 비교할 때 `==` 대신 `===`를 사용하도록 강제. 타입 변환 없이 비교를 해서 의도치 않은 결과를 방지할 수 있어서 추가.
-#### 3. `curly`
-**설정:** `"curly": ["error", "all"]` <br>
-**이유:** 모든 제어문(if, else, while 등)에 중괄호를 사용하도록 강제. 중괄호를 생략하면 가독성이 떨어지고, 버그가 발생할 수 있기 때문에 추가.
-#### 4. `quotes`
-**설정:** `"quotes": ["error", "single"]` <br>
-**이유:** 코드 내에서 일관된 따옴표 스타일을 유지. 주로 'single'이나 "double" 중 하나로 통일하기 위해 추가.
-#### 5. `semi`
+#### 1. `semi`
 **설정:** `"semi": ["error", "always"]` <br>
 **이유:** 모든 문장 끝에 세미콜론을 사용하도록 강제. 자동 세미콜론 삽입(ASI)로 인한 예기치 않은 동작을 방지할 수 있기 때문에 추가.
-#### 6. `no-console`
-**설정:** `"no-console": "warn"` <br>
-**이유:** 디버깅을 위한 `console.log`를 사용한 후, 이를 제거하지 않으면 배포된 코드에 남아 있을 수 있음. 경고해주기 위해 추가.
-#### 7. `indent`
+#### 2. `quotes`
+**설정:** `"quotes": ["error", "single"]` <br>
+**이유:** 코드 내에서 일관된 따옴표 스타일을 유지. 주로 'single'이나 "double" 중 하나로 통일하기 위해 추가.
+#### 3. `no-unused-vars`
+**설정:** `"no-unused-vars": "warn"` <br>
+**이유:** 선언했지만 사용하지 않은 변수가 있으면 경고를 해줌. 불필요한 코드와 잠재적인 버그를 방지하기위해 추가.
+#### 4. `indent`
 **설정:** `"indent": ["error", 2]` <br>
 **이유:** 코드 들여쓰기를 2칸으로 통일. 들여쓰기는 코드 가독성에 큰 영향을 미치니까, 일관성을 유지하기 위해 추가.
-#### 8. `no-undef`
-**설정:** `"no-undef": "error"` <br>
-**이유:** 선언되지 않은 변수를 사용하는 것을 방지. 이는 코드 실행 시 발생할 수 있는 오류를 사전에 막아주기 때문에 추가.
-#### 9. `no-multiple-empty-lines`
-**설정:** `"no-multiple-empty-lines": ["error", { "max": 1 }]` <br>
-**이유:** 여러 개의 빈 줄을 방지해서 코드가 더 깔끔해 보이게 해줌. 빈 줄 하나 정도는 괜찮지만, 여러 개가 되면 가독성이 떨어지기 때문에 추가
-#### 10. `no-trailing-spaces`
-**설정:** `"no-trailing-spaces": "error"` <br>
-**이유:** 라인 끝에 불필요한 공백을 제거. 이런 공백은 코드 가독성을 해치고, 코드 리뷰 시 불필요한 차이를 만들 수 있기 때문에 추가.
+
 
 <br>
 
