@@ -98,7 +98,7 @@
 }
 
 #container.timer .prev {
-  visibility: hidden;
+  /* visibility: hidden; */
   width: 3.13rem; /* 3.3846rem / 1.08 */
   height: 3.13rem; /* 3.3846rem / 1.08 */
   cursor: pointer;
@@ -106,6 +106,7 @@
 }
 
 #container.timer .next {
+  /* visibility: hidden; */
   width: 3.13rem; /* 3.3846rem / 1.08 */
   height: 3.13rem; /* 3.3846rem / 1.08 */
   cursor: pointer;
