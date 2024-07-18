@@ -14,7 +14,7 @@ function updateSubjects() {
         subjectsContainer.removeChild(subjectsContainer.firstChild);
     }
 
-    const localSubjects = getSubjectsLocalStorage().reverse();
+    const localSubjects = getSubjectsLocalStorage();
     if (localSubjects.length === 0) {
         const defaultSubject = ['HTML', 'CSS', 'JS', 'React', 'Git', 'Java', 'DB', 'Spring', 'Cloud'];
         localStorage.setItem('subjects', JSON.stringify(defaultSubject));
@@ -114,7 +114,7 @@ function getSubjectsLocalStorage() {
 
 function setSubjectsLocalStorage(subject) {
     const subjects = getSubjectsLocalStorage();
-    const newSubjects = [subject, ...subjects];
+    const newSubjects = [...subjects, subject];
     localStorage.setItem('subjects', JSON.stringify(newSubjects));
 }
 
