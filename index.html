@@ -110,9 +110,8 @@
       <!-- //header -->
       <section id="container" class="timer">
         <div class="size col-cen">
-          <!-- <input type="text" placeholder="이름을 입력해주세요" class="input" /> -->
           <div class="title">
-            <span class="name">홍길동</span>님의 행복한 시간
+            <span class="name">공이</span>님의 행복한 시간
           </div>
           <div class="timer-box">
             <div class="date">2024년 7월 12일</div>
@@ -144,17 +143,41 @@
               <rect x="49" y="24" width="11" height="40" fill="#0067AB" />
             </svg>
           </div>
-          <ul class="subjects row-cen">
-            <li class="subject"><span>HTML</span></li>
-            <li class="subject"><span>CSS</span></li>
-            <li class="subject"><span>JS</span></li>
-            <li class="subject"><span>React</span></li>
-            <li class="subject"><span>Git</span></li>
-            <li class="subject"><span>Java</span></li>
-            <li class="subject"><span>DB</span></li>
-            <li class="subject"><span>Spring</span></li>
-            <li class="subject"><span>Cloud</span></li>
-          </ul>
+          <div class="row-end">
+            <img src="img/prev.png" alt="prev" class="prev" />
+            <div class="subjects-wrapper">
+              <ul class="subjects row-left">
+                <li class="subject">HTML</li>
+                <li class="subject">CSS</li>
+                <li class="subject">JS</li>
+                <li class="subject">React</li>
+                <li class="subject">Git</li>
+                <li class="subject">Java</li>
+                <li class="subject">DB</li>
+                <li class="subject">Spring</li>
+                <li class="subject">Cloud</li>
+                <li class="subject">+ 과목추가</li>
+              </ul>
+            </div>
+            <img src="img/next.png" alt="next" class="next" />
+          </div>
+        </div>
+        <div id="addSubjectModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="addSubjectForm">
+              <label for="subjectName"></label>
+              <input
+                class="input"
+                type="text"
+                id="subjectName"
+                name="subjectName"
+                placeholder="과목명을 입력해주세요"
+                required
+              />
+              <button class="submit" type="submit">추가</button>
+            </form>
+          </div>
         </div>
       </section>
       <!-- //container -->
