@@ -75,10 +75,10 @@ function stopStopwatch() {
         db.collection('study')
             .add(newStudyData)
             .then(() => {
-                alert('성공!');
+                console.log('성공!');
             })
             .catch((error) => {
-                alert('실패: ' + error.message);
+                console.log('실패: ' + error.message);
             });
     }
 }

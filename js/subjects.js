@@ -1,12 +1,110 @@
-// 슬라이더
+const addSubjectButton = document.querySelector('#container.timer .subject:last-child');
+const modal = document.getElementById('addSubjectModal');
+const closeButton = document.querySelector('#container.timer .close');
+const addSubjectForm = document.getElementById('addSubjectForm');
 const subjectsContainer = document.querySelector('#container.timer .subjects');
 const prevButton = document.querySelector('#container.timer .prev');
 const nextButton = document.querySelector('#container.timer .next');
 let subjects;
 
-let currentIndex = 0;
-const visibleSubjects = 9;
-const gap = 7;
+//// 슬라이더
+function updateSubjects() {
+    // 기존 과목 모두 제거
+    while (subjectsContainer.firstChild) {
+        subjectsContainer.removeChild(subjectsContainer.firstChild);
+    }
+
+    const localSubjects = getSubjectsLocalStorage().reverse();
+    if (localSubjects.length === 0) {
+        const defaultSubject = ['HTML', 'CSS', 'JS', 'React', 'Git', 'Java', 'DB', 'Spring', 'Cloud'];
+        localStorage.setItem('subjects', JSON.stringify(defaultSubject));
+        defaultSubject.forEach(addSubject);
+    } else {
+        localSubjects.forEach(addSubject);
+    }
+
+    // '+ 과목 추가' 버튼 다시 추가
+    subjectsContainer.appendChild(addSubjectButton);
+
+    subjects = document.querySelectorAll('#container.timer .subject');
+
+    subjects.forEach((subject, index) => {
+        if (index !== subjects.length - 1) {
+            subject.onclick = (e) => e.target.classList.toggle('selected');
+            subject.ondblclick = (e) => {
+                e.target.remove();
+                const newSubject = Array.from(getSubjectsLocalStorage()).filter((s) => s !== e.target.textContent);
+                localStorage.setItem('subjects', JSON.stringify(newSubject));
+                updateSubjects();
+                updatePosition();
+            };
+        }
+    });
+}
+
+let currentTranslateX = 0;
+let moveDistance = 0;
+let subjectCount = 0;
+const gap = 6.5;
+const subjectsContainerWidth = subjectsContainer.offsetWidth;
+
+function calculateSubjectsWidth() {
+    return Array.from(subjects).reduce((acc, subject) => acc + subject.offsetWidth + gap, 0);
+}
+
+function nextMoveDistance() {
+    let count = 0;
+    const slicedSubjects = Array.from(subjects).slice(subjectCount);
+    const subjectWidth = slicedSubjects.reduce((acc, subject) => {
+        if (acc + subject.offsetWidth > subjectsContainerWidth) {
+            return acc;
+        }
+        count++;
+        return acc + subject.offsetWidth;
+    }, 0);
+
+    subjectCount += count;
+
+    moveDistance = -(subjectWidth + (count - 1) * gap + 6.5);
+}
+
+function prevMoveDistance() {
+    let count = 0;
+    const slicedSubjects = Array.from(subjects).slice(0, subjectCount).reverse();
+    const subjectWidth = slicedSubjects.reduce((acc, subject) => {
+        if (acc + subject.offsetWidth > subjectsContainer.offsetWidth) {
+            return acc;
+        }
+        count++;
+        return acc + subject.offsetWidth;
+    }, 0);
+
+    subjectCount -= count;
+
+    moveDistance = -(subjectWidth + (count - 1) * gap + 6.5);
+}
+
+function updatePosition() {
+    subjectsContainer.style.transform = `translateX(${currentTranslateX}px)`;
+}
+
+nextButton.addEventListener('click', () => {
+    if (calculateSubjectsWidth() > subjectsContainerWidth) {
+        nextMoveDistance();
+        currentTranslateX += moveDistance;
+        updatePosition();
+    }
+});
+
+prevButton.addEventListener('click', () => {
+    if (currentTranslateX < 0) {
+        prevMoveDistance();
+        currentTranslateX -= moveDistance;
+        updatePosition();
+    }
+});
+
+//// 과목 추가
 
 function getSubjectsLocalStorage() {
     const newSubjectsString = localStorage.getItem('subjects');
@@ -16,62 +114,9 @@ function getSubjectsLocalStorage() {
 
 function setSubjectsLocalStorage(subject) {
     const subjects = getSubjectsLocalStorage();
-    const newSubjects = [...subjects, subject];
+    const newSubjects = [subject, ...subjects];
     localStorage.setItem('subjects', JSON.stringify(newSubjects));
 }
-
-function updateSubjects() {
-    subjects = document.querySelectorAll('#container.timer .subjects .subject');
-
-    // 과목 클릭 이벤트 리스너 추가
-    subjects.forEach((subject, index) =>
-        index !== subjects.length - 1
-            ? (subject.onclick = (e) => e.target.classList.toggle('selected'))
-            : null
-    );
-}
-
-function updatePosition() {
-    if (currentIndex > 0) {
-        const nextElement = subjects[currentIndex + visibleSubjects - 1];
-        const translateX = nextElement
-            ? -(nextElement.offsetWidth + gap) * currentIndex
-            : 0;
-        subjectsContainer.style.transform = `translateX(${translateX}px)`;
-    } else {
-        subjectsContainer.style.transform = 'translateX(0)';
-    }
-}
-
-function updateButtonVisibility() {
-    prevButton.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
-    nextButton.style.visibility =
-    currentIndex + visibleSubjects >= subjects.length ? 'hidden' : 'visible';
-}
-
-nextButton.addEventListener('click', () => {
-    if (currentIndex + visibleSubjects < subjects.length) {
-        currentIndex++;
-        updatePosition();
-        updateButtonVisibility();
-    }
-});
-
-prevButton.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updatePosition();
-        updateButtonVisibility();
-    }
-});
-
-// 과목 추가
-const addSubjectButton = document.querySelector(
-    '#container.timer .subject:last-child'
-);
-const modal = document.getElementById('addSubjectModal');
-const closeButton = document.querySelector('#container.timer .close');
-const addSubjectForm = document.getElementById('addSubjectForm');
 
 addSubjectButton.addEventListener('click', () => {
     modal.style.display = 'block';
@@ -92,27 +137,23 @@ addSubjectForm.addEventListener('submit', (event) => {
     const subjectName = document.getElementById('subjectName').value;
     if (subjectName) {
         addNewSubject(subjectName);
-        setSubjectsLocalStorage(subjectName);
         modal.style.display = 'none';
+        // setSubjectsLocalStorage(subjectName);
         addSubjectForm.reset();
     }
 });
 
-function addNewSubject(subjectName) {
+function addSubject(subject) {
     const newSubject = document.createElement('li');
     newSubject.className = 'subject';
-    newSubject.textContent = subjectName;
-
-    // '+ 과목 추가' 버튼 앞에 새 과목 추가
-    subjectsContainer.insertBefore(newSubject, addSubjectButton);
-
-    // subjects 업데이트
-    updateSubjects();
-
-    // 새 과목이 보이도록 스크롤 조정
-    currentIndex = 0;
-    updatePosition();
-    updateButtonVisibility();
+    newSubject.textContent = subject;
+    subjectsContainer.appendChild(newSubject);
 }
 
-getSubjectsLocalStorage().forEach((subject) => addNewSubject(subject));
+function addNewSubject(subjectName) {
+    setSubjectsLocalStorage(subjectName);
+    updateSubjects();
+    updatePosition();
+}
+
+updateSubjects();
