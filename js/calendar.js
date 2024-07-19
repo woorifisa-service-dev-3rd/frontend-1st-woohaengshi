@@ -1,21 +1,28 @@
 import { db } from './firebaseConfig.js';
-        
+
+const userName = localStorage.getItem('userName');
+const userId = localStorage.getItem('userId');
+let totalTime = 0;
 //데이터 불러오기
 db.collection('study')
     .get()
     .then((result) => {
         // 데이터 배열 선언
         let dataArray = [];
+        
         result.docs.forEach((doc) => {
             // 데이터 배열 생성
-            const userId = doc.data().userId;
-            const userName = doc.data().name;
-            const studySubject = doc.data().subject;
-            const studydate = new Date(doc.data().date.seconds * 1000 + doc.data().date.nanoseconds / 1000000);
-            const time = parseInt(doc.data().time);
-
-            dataArray.push({userId, userName, studySubject, studydate, time});            
+            if(userId === doc.data().userId){
+                const studySubject = doc.data().subject;    
+                const studydate = new Date(doc.data().date.seconds * 1000 + doc.data().date.nanoseconds / 1000000);
+            
+                const time = parseInt(doc.data().time);
+                totalTime += parseInt(doc.data().time);
+                dataArray.push({userId, userName, studySubject, studydate, time});            
+            }
         });
+
+        // console.log(totalTime);
 
         // 달력 변수
         const calendarTitle = document.getElementById('title');
@@ -101,70 +108,90 @@ db.collection('study')
                 const historyDate = data.studydate.getDate();
         
                 // 기록된 시간분초 
-                const historyHour = new Date(data.time * 1000).getHours();
-                const historyMinute = new Date(data.time * 1000).getMinutes();
-                const historySecond = new Date(data.time * 1000).getSeconds();
+                // const historyHour = new Date(data.time * 1000).getHours();
+                // const historyMinute = new Date(data.time * 1000).getMinutes();
+                // const historySecond = new Date(data.time * 1000).getSeconds();
+                
+
+                const hours = Math.floor(data.time / 3600);
+                const minutes = Math.floor((data.time % 3600) / 60);
+                const seconds = (data.time % 3600) % 60;
+                console.log(`${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toFixed(2)}`);
+                
             
                 // 년월일 일치시 달력에 기록
                 if(year == historyYear && month == historyMonth){
                     const dDay = document.querySelector(`#calendar_body .date${historyDate} ul`);
                     // 입력될 li 
-                    const history = `<li class="small">${data.studySubject} ${historyHour}:${historyMinute}:${historySecond}</li>`;
+                    const history = `<li class="small">${data.studySubject} ${hours}:${minutes}:${seconds}</li>`;
                     dDay.insertAdjacentHTML('beforeend', history);
                 }
             });
         }
 
         // 총합
-        function timeSum(){
-            // 총합 시간분초
-            let sumHour = 0;
-            let sumMinute = 0;
-            let sumSecond = 0;
+        // function timeSum(){
+        //     // 총합 시간분초
+        //     let sumHour = 0;
+        //     let sumMinute = 0;
+        //     let sumSecond = 0;
 
-            dataArray.forEach((data)=>{
-                // 기록된 시간분초 
-                const historyHour = new Date(data.time * 1000).getHours();
-                const historyMinute = new Date(data.time * 1000).getMinutes();
-                const historySecond = new Date(data.time * 1000).getSeconds();
+        //     dataArray.forEach((data)=>{
+        //         // 기록된 시간분초 
+        //         const historyHour = new Date(data.time * 1000).getHours();
+        //         const historyMinute = new Date(data.time * 1000).getMinutes();
+        //         const historySecond = new Date(data.time * 1000).getSeconds();
 
-                sumHour += historyHour;
-                sumMinute += historyMinute;
-                sumSecond += historySecond;
-            });
+        //         sumHour += historyHour;
+        //         sumMinute += historyMinute;
+        //         sumSecond += historySecond;
+        //     });
 
-            const sumText = document.getElementById('time_sum');
-            sumText.innerText = `${sumHour}:${sumMinute}:${sumSecond}`;
+        //     const sumText = document.getElementById('time_sum');
+        //     sumText.innerText = `${sumHour}:${sumMinute}:${sumSecond}`;
             
-        }
-        timeSum();
+        // }
+        // timeSum();
+        const sumText = document.getElementById('time_sum');
+        // console.log(totalTime);
+        const hours = Math.floor(totalTime / 3600);
+        const minutes = Math.floor((totalTime % 3600) / 60);
+        const seconds = (totalTime % 3600) % 60;
+        sumText.innerText = `${hours}:${minutes}:${seconds}`;
+
+        const avgText = document.getElementById('time_avg');
+        const avg = Math.floor(totalTime / dataArray.length);
+        const avgHours = Math.floor(avg / 3600);
+        const avgMinutes = Math.floor((avg % 3600) / 60);
+        const avgSeconds = (avg % 3600) % 60;
+        avgText.innerText = `${avgHours}:${avgMinutes}:${avgSeconds}`;
 
         // 평균
-        function timeAvg(){
-            // 평균 시간분초
-            let avgHour = 0;
-            let avgMinute = 0;
-            let avgSecond = 0;
+        // function timeAvg(){
+        //     // 평균 시간분초
+        //     let avgHour = 0;
+        //     let avgMinute = 0;
+        //     let avgSecond = 0;
 
-            dataArray.forEach((data)=>{
-                // 기록된 시간분초 
-                const historyHour = new Date(data.time * 1000).getHours();
-                const historyMinute = new Date(data.time * 1000).getMinutes();
-                const historySecond = new Date(data.time * 1000).getSeconds();
+        //     dataArray.forEach((data)=>{
+        //         // 기록된 시간분초 
+        //         const historyHour = new Date(data.time * 1000).getHours();
+        //         const historyMinute = new Date(data.time * 1000).getMinutes();
+        //         const historySecond = new Date(data.time * 1000).getSeconds();
 
-                avgHour += historyHour;
-                avgMinute += historyMinute;
-                avgSecond += historySecond;
-            });
+        //         avgHour += historyHour;
+        //         avgMinute += historyMinute;
+        //         avgSecond += historySecond;
+        //     });
 
-            avgHour = parseInt(avgHour / dataArray.length);
-            avgMinute = parseInt(avgMinute / dataArray.length);
-            avgSecond = parseInt(avgSecond / dataArray.length);
+        //     avgHour = parseInt(avgHour / dataArray.length);
+        //     avgMinute = parseInt(avgMinute / dataArray.length);
+        //     avgSecond = parseInt(avgSecond / dataArray.length);
 
-            console.log(avgMinute);
+        //     console.log(avgMinute);
 
-            const sumText = document.getElementById('time_avg');
-            sumText.innerText = `${avgHour}:${avgMinute}:${avgSecond}`;
-        }
-        timeAvg();
+        //     const sumText = document.getElementById('time_avg');
+        //     sumText.innerText = `${avgHour}:${avgMinute}:${avgSecond}`;
+        // }
+        // timeAvg();
     });
